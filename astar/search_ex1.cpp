@@ -40,6 +40,11 @@ vector<vector<State>> ReadBoardFile(string path) {
   return board;
 }
 
+// Heurisitic search function
+int Heuristic(int x1, int y1, int x2, int y2) {
+  return abs(x2 - x1) + abs(y2 - y1);
+}
+
 // TODO: Write the Search function stub here.
 vector<vector<State>> Search(vector<vector<State>> board, const int init[2],
                              const int goal[2]) {
@@ -78,4 +83,5 @@ int main() {
   // in the variable "solution".
   // TODO: Change the following line to pass "solution" to PrintBoard.
   PrintBoard(solution);
+  cout << abs(-3);
 }
