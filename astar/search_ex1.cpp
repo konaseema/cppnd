@@ -45,6 +45,15 @@ int Heuristic(int x1, int y1, int x2, int y2) {
   return abs(x2 - x1) + abs(y2 - y1);
 }
 
+// TODO: Write the AddToOpen function here
+void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &open,
+               vector<vector<State>> &grid) {
+
+  vector<int> new_node = {x, y, g, h};
+  open.push_back(new_node);
+  grid[x][y] = State::kClosed;
+}
+
 // TODO: Write the Search function stub here.
 vector<vector<State>> Search(vector<vector<State>> board, const int init[2],
                              const int goal[2]) {
@@ -83,5 +92,4 @@ int main() {
   // in the variable "solution".
   // TODO: Change the following line to pass "solution" to PrintBoard.
   PrintBoard(solution);
-  cout << abs(-3);
 }
