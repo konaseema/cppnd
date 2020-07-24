@@ -1,11 +1,11 @@
-​ #include<algorithm> // for sort
+#include <algorithm> // for sort
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
-    using std::cout;
 using std::abs;
+using std::cout;
 using std::ifstream;
 using std::istringstream;
 using std::sort;
@@ -13,7 +13,7 @@ using std::string;
 using std::vector;
 
 // TODO: Add kStart and kFinish enumerators to the State enum.
-enum class State { kEmpty, kObstacle, kClosed, kPath };
+enum class State { kEmpty, kObstacle, kClosed, kPath, kStart, kFinish };
 
 // directional deltas
 const int delta[4][2]{{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
@@ -141,6 +141,8 @@ vector<vector<State>> Search(vector<vector<State>> grid, int init[2],
     if (x == goal[0] && y == goal[1]) {
       // TODO: Set the init grid cell to kStart, and
       // set the goal grid cell to kFinish before returning the grid.
+      grid[init[0]][init[1]] = State::kStart;
+      grid[goal[0]][goal[1]] = State::kFinish;
       return grid;
     }
 
@@ -160,6 +162,10 @@ string CellString(State cell) {
     return "⛰️   ";
   case State::kPath:
     return "🚗   ";
+  case State::kStart:
+    return "🚦   ";
+  case State::kFinish:
+    return "🏁   ";
   // TODO: Add cases to return "🚦   " for kStart
   // and "🏁   " for kFinish.
   default:
@@ -176,7 +182,7 @@ void PrintBoard(const vector<vector<State>> board) {
   }
 }
 
-#include "test.cpp"
+//#include "test.cpp"
 
 int main() {
   int init[2]{0, 0};
@@ -186,9 +192,9 @@ int main() {
   PrintBoard(solution);
   // Tests
   /*TestHeuristic();
-   TestAddToOpen();
-   TestCompare();
-   TestSearch();
-   TestCheckValidCell();
-   TestExpandNeighbors();*/
+  TestAddToOpen();
+  TestCompare();
+  TestSearch();
+  TestCheckValidCell();
+  TestExpandNeighbors();*/
 }
