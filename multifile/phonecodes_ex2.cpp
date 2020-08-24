@@ -235,16 +235,12 @@ int main() {
     cout << "Inserting a key-value pair into the dictionary."
          << "\n\n";
     // Set the value for the key.
-    my_dictionary[key] = "Maldives";
+    phone_code[key] = "Maldives";
   }
 
-  // The key should now be in the hash table. You can access the
-  // value corresponding to the key with square brackets [].
-  // Here, the value my_dictionary[key] is a vector of strings.
-  // We iterate over the vector and print the strings.
-  cout << key << ": \n";
-  vector<string> definitions = my_dictionary[key];
-  for (string definition : definitions) {
-    cout << definition << "\n";
+  // Now print the value of the key-value pair {960, "Maldives"}
+
+  if (phone_code.find(960) != phone_code.end()) {
+    cout << phone_code[960]<<"\n";
   }
 }
